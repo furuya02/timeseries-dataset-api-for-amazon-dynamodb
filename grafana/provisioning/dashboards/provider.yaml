@@ -1,0 +1,9 @@
+# grafana/dashboards の JSON をダッシュボードとして読み込む
+apiVersion: 1
+providers:
+  - name: timeseries-dataset-api
+    folder: timeseries-dataset-api
+    type: file
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
