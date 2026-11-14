@@ -11,6 +11,6 @@
 | 7 | [API reference](en/07-api-reference.md) | [API リファレンス](ja/07-api-reference.md) |
 | 8 | [Development](en/08-development.md) | [開発者向け](ja/08-development.md) |
 
-Tested with: Grafana OSS 13.3.1, Infinity 4.1.5, AWS CDK 2.275.0, Node.js 22 (CI runs Node.js 22 and 24) (November 2026).
+Tested with: Grafana OSS 13.3.1, Infinity 4.1.5, AWS CDK 2.276.0, Node.js 22 (CI runs Node.js 22 and 24) (November 2026).
 
-確認した環境: Grafana OSS 13.3.1、Infinity 4.1.5、AWS CDK 2.275.0、Node.js 22（CI では Node.js 22 と 24）（2026/11）。
+確認した環境: Grafana OSS 13.3.1、Infinity 4.1.5、AWS CDK 2.276.0、Node.js 22（CI では Node.js 22 と 24）（2026/11）。
