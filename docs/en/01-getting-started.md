@@ -100,10 +100,10 @@ The script prints its messages in Japanese, as shown below.
 エンドポイント: https://xxxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/v1/
 認証: IAM（SigV4、サービス execute-api、ap-northeast-1）
 
-OK GET /datasets（161ms）: room_temp
-OK GET /keys?dataset=room_temp（114ms）: room-01, room-02, room-03
-OK GET /query 直近 1 時間・5 分平均（73ms）: 12 点、読んだ件数 60、消費 RCU 0.5
-OK GET /query 最新値（101ms）: 2026-11-04T20:59:00.000Z {"time":...,"key":"room-01","temperature":20.3,"humidity":59.2}
+OK GET /datasets (161ms): room_temp
+OK GET /keys?dataset=room_temp (114ms): room-01, room-02, room-03
+OK GET /query 直近 1 時間・5 分平均 (73ms): 12 点、読んだ件数 60、消費 RCU 0.5
+OK GET /query 最新値 (101ms): 2026-11-04T20:59:00.000Z {"time":...,"key":"room-01","temperature":20.3,"humidity":59.2}
 ```
 
 `pnpm check` reads the endpoint and the authentication method from the CloudFormation outputs, and calls the API with SigV4 signing using your own credentials. If it shows NG, follow the cause it prints, or see [Operations and troubleshooting](06-operations.md).
