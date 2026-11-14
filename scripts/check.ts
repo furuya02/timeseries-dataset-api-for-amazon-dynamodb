@@ -60,14 +60,14 @@ const ok = (r: ApiResponse, step: string) => {
 // 1. データセット一覧
 const ds = ok(await get('datasets'), 'GET /datasets');
 const names = (ds.body as { name: string }[]).map((d) => d.name);
-console.log(`\nOK GET /datasets（${ds.ms}ms）: ${names.join(', ')}`);
+console.log(`\nOK GET /datasets (${ds.ms}ms): ${names.join(', ')}`);
 const dataset = args.dataset ?? names[0];
 if (!dataset) fail('GET /datasets', { status: ds.status, body: 'データセットが 1 つもありません' }, target.auth);
 
 // 2. キー一覧
 const ks = ok(await get('keys', { dataset }), 'GET /keys');
 const keys = (ks.body as { key: string }[]).map((k) => k.key);
-console.log(`OK GET /keys?dataset=${dataset}（${ks.ms}ms）: ${keys.length > 0 ? keys.join(', ') : '（なし。keys.values か keys.list を書くと一覧が出ます）'}`);
+console.log(`OK GET /keys?dataset=${dataset} (${ks.ms}ms): ${keys.length > 0 ? keys.join(', ') : '（なし。keys.values か keys.list を書くと一覧が出ます）'}`);
 const key = args.key ?? keys[0];
 if (!key) {
   console.log('\n--key を指定すると、時系列の取得も確かめます');
@@ -80,11 +80,11 @@ const to = Date.now();
 const q = ok(await get('query', { dataset, key, from: String(to - 3_600_000), to: String(to), interval: '5m', agg: 'avg' }), 'GET /query');
 const { meta, rows } = q.body as QueryBody;
 console.log(
-  `OK GET /query 直近 1 時間・5 分平均（${q.ms}ms）: ${rows.length} 点、読んだ件数 ${meta.items}、消費 RCU ${meta.consumedRcu}${meta.truncated ? `、打ち切り（${meta.truncatedBy}）` : ''}`,
+  `OK GET /query 直近 1 時間・5 分平均 (${q.ms}ms): ${rows.length} 点、読んだ件数 ${meta.items}、消費 RCU ${meta.consumedRcu}${meta.truncated ? `、打ち切り（${meta.truncatedBy}）` : ''}`,
 );
 const latest = ok(await get('query', { dataset, key, from: String(to - 86_400_000), to: String(to), latest: '1' }), 'GET /query latest');
 const row = (latest.body as QueryBody).rows[0];
 console.log(
-  `OK GET /query 最新値（${latest.ms}ms）: ${row ? `${new Date(row.time as number).toISOString()} ${JSON.stringify(row)}` : '直近 24 時間にデータがありません'}`,
+  `OK GET /query 最新値 (${latest.ms}ms): ${row ? `${new Date(row.time as number).toISOString()} ${JSON.stringify(row)}` : '直近 24 時間にデータがありません'}`,
 );
 if (rows.length === 0) console.log('\n直近 1 時間のデータがありません。pnpm seed でサンプルデータを入れるか、期間を確かめてください');
