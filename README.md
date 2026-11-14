@@ -33,7 +33,7 @@ pnpm cdk-deploy -c sample=true -c grafanaUser=true
 pnpm seed
 pnpm check            # check the API responses without Grafana
 
-# Create an access key for Grafana and start a local Grafana (OSS 13.3.0 + Infinity 4.1.5)
+# Create an access key for Grafana and start a local Grafana (OSS 13.3.1 + Infinity 4.1.5)
 aws iam create-access-key --user-name timeseries-dataset-api-grafana
 export TSAPI_AWS_ACCESS_KEY_ID=AKIA... TSAPI_AWS_SECRET_ACCESS_KEY=...
 pnpm grafana-config
@@ -81,7 +81,7 @@ GET /query?dataset=room_temp&key=a,b&from=${__from}&to=${__to}&interval=${__inte
 | Node.js / pnpm | 22.23.4 / 10.24.0 (CI runs Node.js 22 and 24) |
 | AWS CDK | aws-cdk-lib 2.275.0, CLI 2.1148.0 |
 | AWS SDK for JavaScript | 3.1164.0 (the Lambda function uses the SDK bundled in the runtime) |
-| Grafana / Infinity | Grafana OSS 13.3.0 / Infinity 4.1.5 |
+| Grafana / Infinity | Grafana OSS 13.3.1 / Infinity 4.1.5 |
 | DynamoDB Local | 3.3.2 |
 
 Connections from Grafana Cloud and Amazon Managed Grafana have not been tested yet ([Connecting Grafana](docs/en/03-grafana.md)).
